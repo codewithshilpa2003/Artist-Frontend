@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #050914;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(212, 175, 55, 0.35);
+  color: #fff;
+}
+
+.font-serif {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, "Times New Roman", serif !important;
+}
+
+@keyframes stampIn {
+  0% { transform: scale(2.4) rotate(-14deg); opacity: 0; }
+  55% { transform: scale(0.92) rotate(-7deg); opacity: 1; }
+  75% { transform: scale(1.06) rotate(-8deg); opacity: 1; }
+  to { transform: scale(1) rotate(-8deg); opacity: 1; }
+}
+
+.stamp-in {
+  animation: stampIn 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+@keyframes stepIn {
+  0% { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.step-in {
+  animation: stepIn 0.35s ease-out both;
+}
+
+@keyframes qrFlowX {
+  to { background-position-x: 44px; }
+}
+
+.qr-h {
+  background-image: repeating-linear-gradient(90deg, #d4af37 0 12px, transparent 12px 24px);
+  animation: qrFlowX 0.9s linear infinite;
+}
+
+@keyframes qrFlowY {
+  to { background-position-y: 44px; }
+}
+
+.qr-v {
+  background-image: repeating-linear-gradient(180deg, #d4af37 0 12px, transparent 12px 24px);
+  animation: qrFlowY 0.9s linear infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, to { opacity: 0; }
+}
+
+.terminal-cursor {
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes spinSlow {
+  to { transform: rotate(1turn); }
+}
+
+.spin-slower {
+  animation: spinSlow 60s linear infinite;
+}
+
+@keyframes scanSweep {
+  0% { top: -10%; opacity: 0; }
+  15%, 85% { opacity: 1; }
+  to { top: 110%; opacity: 0; }
+}
+
+.scanline {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.8), transparent);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+  animation: scanSweep 3.2s ease-in-out infinite;
+}
+
+.device-screen {
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070c1c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a3352;
+  border: 2px solid #070c1c;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
